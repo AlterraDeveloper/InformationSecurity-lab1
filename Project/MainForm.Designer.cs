@@ -28,38 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.radioBtnsGroupCryptMethods = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioBtnTritemiusEncoding = new System.Windows.Forms.RadioButton();
+            this.radioBtnCaesarEncoding = new System.Windows.Forms.RadioButton();
+            this.radioBtnMonoEncoding = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.radioBtnsGroupCryptMethods.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // inputTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 30);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(562, 187);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.inputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputTextBox.Location = new System.Drawing.Point(12, 30);
+            this.inputTextBox.Multiline = true;
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Size = new System.Drawing.Size(562, 187);
+            this.inputTextBox.TabIndex = 0;
+            this.inputTextBox.TextChanged += new System.EventHandler(this.enableCryptButton);
             // 
-            // textBox2
+            // outputTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 351);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(562, 187);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.outputTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputTextBox.Location = new System.Drawing.Point(12, 351);
+            this.outputTextBox.Multiline = true;
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.Size = new System.Drawing.Size(562, 187);
+            this.outputTextBox.TabIndex = 1;
             // 
             // btnEncrypt
             // 
+            this.btnEncrypt.Enabled = false;
             this.btnEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEncrypt.Location = new System.Drawing.Point(12, 241);
             this.btnEncrypt.Name = "btnEncrypt";
@@ -67,13 +69,13 @@
             this.btnEncrypt.TabIndex = 2;
             this.btnEncrypt.Text = "Зашифровать";
             this.btnEncrypt.UseVisualStyleBackColor = true;
-            this.btnEncrypt.Click += new System.EventHandler(this.button1_Click);
+            this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
             // radioBtnsGroupCryptMethods
             // 
-            this.radioBtnsGroupCryptMethods.Controls.Add(this.radioButton3);
-            this.radioBtnsGroupCryptMethods.Controls.Add(this.radioButton2);
-            this.radioBtnsGroupCryptMethods.Controls.Add(this.radioButton1);
+            this.radioBtnsGroupCryptMethods.Controls.Add(this.radioBtnTritemiusEncoding);
+            this.radioBtnsGroupCryptMethods.Controls.Add(this.radioBtnCaesarEncoding);
+            this.radioBtnsGroupCryptMethods.Controls.Add(this.radioBtnMonoEncoding);
             this.radioBtnsGroupCryptMethods.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioBtnsGroupCryptMethods.Location = new System.Drawing.Point(243, 241);
             this.radioBtnsGroupCryptMethods.Name = "radioBtnsGroupCryptMethods";
@@ -82,42 +84,44 @@
             this.radioBtnsGroupCryptMethods.TabStop = false;
             this.radioBtnsGroupCryptMethods.Text = "Метод шифрования";
             // 
-            // radioButton1
+            // radioBtnTritemiusEncoding
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(14, 25);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(298, 20);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Алгоритм моно алфавитной подстановки";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioBtnTritemiusEncoding.AutoSize = true;
+            this.radioBtnTritemiusEncoding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioBtnTritemiusEncoding.Location = new System.Drawing.Point(14, 69);
+            this.radioBtnTritemiusEncoding.Name = "radioBtnTritemiusEncoding";
+            this.radioBtnTritemiusEncoding.Size = new System.Drawing.Size(172, 20);
+            this.radioBtnTritemiusEncoding.TabIndex = 2;
+            this.radioBtnTritemiusEncoding.TabStop = true;
+            this.radioBtnTritemiusEncoding.Text = "Алгоритм Тритемиуса";
+            this.radioBtnTritemiusEncoding.UseVisualStyleBackColor = true;
+            this.radioBtnTritemiusEncoding.CheckedChanged += new System.EventHandler(this.enableCryptButton);
             // 
-            // radioButton2
+            // radioBtnCaesarEncoding
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(14, 48);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(140, 20);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Алгоритм Цезаря";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioBtnCaesarEncoding.AutoSize = true;
+            this.radioBtnCaesarEncoding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioBtnCaesarEncoding.Location = new System.Drawing.Point(14, 48);
+            this.radioBtnCaesarEncoding.Name = "radioBtnCaesarEncoding";
+            this.radioBtnCaesarEncoding.Size = new System.Drawing.Size(140, 20);
+            this.radioBtnCaesarEncoding.TabIndex = 1;
+            this.radioBtnCaesarEncoding.TabStop = true;
+            this.radioBtnCaesarEncoding.Text = "Алгоритм Цезаря";
+            this.radioBtnCaesarEncoding.UseVisualStyleBackColor = true;
+            this.radioBtnCaesarEncoding.CheckedChanged += new System.EventHandler(this.enableCryptButton);
             // 
-            // radioButton3
+            // radioBtnMonoEncoding
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton3.Location = new System.Drawing.Point(14, 69);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(172, 20);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Алгоритм Тритемиуса";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioBtnMonoEncoding.AutoSize = true;
+            this.radioBtnMonoEncoding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioBtnMonoEncoding.Location = new System.Drawing.Point(14, 25);
+            this.radioBtnMonoEncoding.Name = "radioBtnMonoEncoding";
+            this.radioBtnMonoEncoding.Size = new System.Drawing.Size(298, 20);
+            this.radioBtnMonoEncoding.TabIndex = 0;
+            this.radioBtnMonoEncoding.TabStop = true;
+            this.radioBtnMonoEncoding.Text = "Алгоритм моно алфавитной подстановки";
+            this.radioBtnMonoEncoding.UseVisualStyleBackColor = true;
+            this.radioBtnMonoEncoding.CheckedChanged += new System.EventHandler(this.enableCryptButton);
             // 
             // button1
             // 
@@ -148,11 +152,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.radioBtnsGroupCryptMethods);
             this.Controls.Add(this.btnEncrypt);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.outputTextBox);
+            this.Controls.Add(this.inputTextBox);
             this.Name = "MainForm";
             this.Text = "Main Form";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.radioBtnsGroupCryptMethods.ResumeLayout(false);
             this.radioBtnsGroupCryptMethods.PerformLayout();
             this.ResumeLayout(false);
@@ -162,13 +165,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox inputTextBox;
+        private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.Button btnEncrypt;
         private System.Windows.Forms.GroupBox radioBtnsGroupCryptMethods;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioBtnTritemiusEncoding;
+        private System.Windows.Forms.RadioButton radioBtnCaesarEncoding;
+        private System.Windows.Forms.RadioButton radioBtnMonoEncoding;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
     }

@@ -17,29 +17,34 @@ namespace Project
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            if (radioBtnMonoEncoding.Checked)
+            {
+                outputTextBox.Text = new MonoEncoder().Encrypt(inputTextBox.Text);
+            }
 
+            if (radioBtnCaesarEncoding.Checked)
+            {
+                outputTextBox.Text = new CaesarEncoder(1).Encrypt(inputTextBox.Text);
+            }
+            if (radioBtnTritemiusEncoding.Checked)
+            {
+                outputTextBox.Text = new TritemiusEncoder("шифр").Encrypt(inputTextBox.Text); 
+            }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void enableCryptButton(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            if (inputTextBox.Text != string.Empty &&
+                (radioBtnCaesarEncoding.Checked || radioBtnMonoEncoding.Checked || radioBtnTritemiusEncoding.Checked))
+            {
+                btnEncrypt.Enabled = true;
+            }
+            else
+            {
+                btnEncrypt.Enabled = false;
+            }
         }
     }
 }
