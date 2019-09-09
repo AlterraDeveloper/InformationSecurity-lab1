@@ -47,6 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaesarEncoder.cs" />
+    <Compile Include="FrequentCounter.cs" />
+    <Compile Include="FrequentDictForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrequentDictForm.Designer.cs">
+      <DependentUpon>FrequentDictForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ICryptable.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -58,6 +65,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TritemiusEncoder.cs" />
+    <EmbeddedResource Include="FrequentDictForm.resx">
+      <DependentUpon>FrequentDictForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -70,6 +80,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\FrequentCounter.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -13,7 +13,7 @@ namespace Project
         private int cryptKey;
         const string ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 
-        public CaesarEncoder(int cryptKey)
+        public CaesarEncoder(int cryptKey = 1)
         {
             this.cryptKey = cryptKey;
         }
