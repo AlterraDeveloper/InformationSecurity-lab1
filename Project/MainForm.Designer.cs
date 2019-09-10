@@ -32,6 +32,7 @@
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.radioBtnsGroupCryptMethods = new System.Windows.Forms.GroupBox();
+            this.tritemiusWordInput = new System.Windows.Forms.TextBox();
             this.caesarKeyInput = new System.Windows.Forms.TextBox();
             this.radioBtnTritemiusEncoding = new System.Windows.Forms.RadioButton();
             this.radioBtnCaesarEncoding = new System.Windows.Forms.RadioButton();
@@ -40,7 +41,7 @@
             this.btnSaveTextToFile = new System.Windows.Forms.Button();
             this.btnShowFrequencyDictionaryForInputText = new System.Windows.Forms.Button();
             this.btnShowFrequencyDictionaryForOutputText = new System.Windows.Forms.Button();
-            this.tritemiusWordInput = new System.Windows.Forms.TextBox();
+            this.btnDecrypt = new System.Windows.Forms.Button();
             this.radioBtnsGroupCryptMethods.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +94,13 @@
             this.radioBtnsGroupCryptMethods.TabIndex = 3;
             this.radioBtnsGroupCryptMethods.TabStop = false;
             this.radioBtnsGroupCryptMethods.Text = "Метод шифрования";
+            // 
+            // tritemiusWordInput
+            // 
+            this.tritemiusWordInput.Location = new System.Drawing.Point(193, 95);
+            this.tritemiusWordInput.Name = "tritemiusWordInput";
+            this.tritemiusWordInput.Size = new System.Drawing.Size(119, 26);
+            this.tritemiusWordInput.TabIndex = 4;
             // 
             // caesarKeyInput
             // 
@@ -188,18 +196,24 @@
             this.btnShowFrequencyDictionaryForOutputText.UseVisualStyleBackColor = true;
             this.btnShowFrequencyDictionaryForOutputText.Click += new System.EventHandler(this.btnShowFrequencyDictionaryForOutputText_Click);
             // 
-            // tritemiusWordInput
+            // btnDecrypt
             // 
-            this.tritemiusWordInput.Location = new System.Drawing.Point(193, 95);
-            this.tritemiusWordInput.Name = "tritemiusWordInput";
-            this.tritemiusWordInput.Size = new System.Drawing.Size(119, 26);
-            this.tritemiusWordInput.TabIndex = 4;
+            this.btnDecrypt.Enabled = false;
+            this.btnDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDecrypt.Location = new System.Drawing.Point(13, 285);
+            this.btnDecrypt.Name = "btnDecrypt";
+            this.btnDecrypt.Size = new System.Drawing.Size(202, 37);
+            this.btnDecrypt.TabIndex = 9;
+            this.btnDecrypt.Text = "Расшифровать";
+            this.btnDecrypt.UseVisualStyleBackColor = true;
+            this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 584);
+            this.Controls.Add(this.btnDecrypt);
             this.Controls.Add(this.btnShowFrequencyDictionaryForOutputText);
             this.Controls.Add(this.btnShowFrequencyDictionaryForInputText);
             this.Controls.Add(this.btnSaveTextToFile);
@@ -232,6 +246,7 @@
         private System.Windows.Forms.Button btnShowFrequencyDictionaryForOutputText;
         private System.Windows.Forms.TextBox caesarKeyInput;
         private System.Windows.Forms.TextBox tritemiusWordInput;
+        private System.Windows.Forms.Button btnDecrypt;
     }
 }
 

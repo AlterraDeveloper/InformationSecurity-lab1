@@ -13,15 +13,15 @@ namespace Project
 {
     public partial class FrequentDictForm : Form
     {
-        public FrequentDictForm(Dictionary<char,int> dataSource)
+        public FrequentDictForm(Dictionary<char,double> dataSource)
         {
             InitializeComponent();
 
             dataGridFreqDict.DataSource =
-                (from pair in dataSource orderby pair.Key select new {letterColumn = pair.Key, countColumn = pair.Value}).ToList();
+                (from pair in dataSource orderby pair.Value descending select new {letterColumn = pair.Key, countColumn = pair.Value}).ToList();
 
             dataGridFreqDict.Columns[0].HeaderText = "Буква";
-            dataGridFreqDict.Columns[1].HeaderText = "Частота появления";
+            dataGridFreqDict.Columns[1].HeaderText = "Частота появления в %";
 
         }
     }
