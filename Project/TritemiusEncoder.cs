@@ -13,7 +13,8 @@ namespace Project
 
         public TritemiusEncoder(string key)
         {
-            cryptWord = key;
+            if (key == string.Empty) cryptWord = "тритемиус";
+            else cryptWord = key;
         }
 
         public string Encrypt(string inputText)

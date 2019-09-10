@@ -33,7 +33,6 @@
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.radioBtnsGroupCryptMethods = new System.Windows.Forms.GroupBox();
             this.tritemiusWordInput = new System.Windows.Forms.TextBox();
-            this.caesarKeyInput = new System.Windows.Forms.TextBox();
             this.radioBtnTritemiusEncoding = new System.Windows.Forms.RadioButton();
             this.radioBtnCaesarEncoding = new System.Windows.Forms.RadioButton();
             this.radioBtnMonoEncoding = new System.Windows.Forms.RadioButton();
@@ -42,7 +41,9 @@
             this.btnShowFrequencyDictionaryForInputText = new System.Windows.Forms.Button();
             this.btnShowFrequencyDictionaryForOutputText = new System.Windows.Forms.Button();
             this.btnDecrypt = new System.Windows.Forms.Button();
+            this.caesarKeyInput = new System.Windows.Forms.NumericUpDown();
             this.radioBtnsGroupCryptMethods.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.caesarKeyInput)).BeginInit();
             this.SuspendLayout();
             // 
             // inputTextBox
@@ -82,8 +83,8 @@
             // 
             // radioBtnsGroupCryptMethods
             // 
-            this.radioBtnsGroupCryptMethods.Controls.Add(this.tritemiusWordInput);
             this.radioBtnsGroupCryptMethods.Controls.Add(this.caesarKeyInput);
+            this.radioBtnsGroupCryptMethods.Controls.Add(this.tritemiusWordInput);
             this.radioBtnsGroupCryptMethods.Controls.Add(this.radioBtnTritemiusEncoding);
             this.radioBtnsGroupCryptMethods.Controls.Add(this.radioBtnCaesarEncoding);
             this.radioBtnsGroupCryptMethods.Controls.Add(this.radioBtnMonoEncoding);
@@ -101,14 +102,6 @@
             this.tritemiusWordInput.Name = "tritemiusWordInput";
             this.tritemiusWordInput.Size = new System.Drawing.Size(119, 26);
             this.tritemiusWordInput.TabIndex = 4;
-            // 
-            // caesarKeyInput
-            // 
-            this.caesarKeyInput.Location = new System.Drawing.Point(160, 54);
-            this.caesarKeyInput.Name = "caesarKeyInput";
-            this.caesarKeyInput.Size = new System.Drawing.Size(109, 26);
-            this.caesarKeyInput.TabIndex = 3;
-            this.caesarKeyInput.TextChanged += new System.EventHandler(this.caesarKeyInput_TextChanged);
             // 
             // radioBtnTritemiusEncoding
             // 
@@ -208,6 +201,13 @@
             this.btnDecrypt.UseVisualStyleBackColor = true;
             this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
+            // caesarKeyInput
+            // 
+            this.caesarKeyInput.Location = new System.Drawing.Point(161, 53);
+            this.caesarKeyInput.Name = "caesarKeyInput";
+            this.caesarKeyInput.Size = new System.Drawing.Size(120, 26);
+            this.caesarKeyInput.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +226,7 @@
             this.Text = "Main Form";
             this.radioBtnsGroupCryptMethods.ResumeLayout(false);
             this.radioBtnsGroupCryptMethods.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.caesarKeyInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,9 +245,9 @@
         private System.Windows.Forms.Button btnSaveTextToFile;
         private System.Windows.Forms.Button btnShowFrequencyDictionaryForInputText;
         private System.Windows.Forms.Button btnShowFrequencyDictionaryForOutputText;
-        private System.Windows.Forms.TextBox caesarKeyInput;
         private System.Windows.Forms.TextBox tritemiusWordInput;
         private System.Windows.Forms.Button btnDecrypt;
+        private System.Windows.Forms.NumericUpDown caesarKeyInput;
     }
 }
 
