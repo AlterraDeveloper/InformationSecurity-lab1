@@ -32,16 +32,15 @@
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.radioBtnsGroupCryptMethods = new System.Windows.Forms.GroupBox();
+            this.caesarKeyInput = new System.Windows.Forms.NumericUpDown();
             this.tritemiusWordInput = new System.Windows.Forms.TextBox();
             this.radioBtnTritemiusEncoding = new System.Windows.Forms.RadioButton();
             this.radioBtnCaesarEncoding = new System.Windows.Forms.RadioButton();
             this.radioBtnMonoEncoding = new System.Windows.Forms.RadioButton();
             this.btnLoadTextFromFile = new System.Windows.Forms.Button();
             this.btnSaveTextToFile = new System.Windows.Forms.Button();
-            this.btnShowFrequencyDictionaryForInputText = new System.Windows.Forms.Button();
             this.btnShowFrequencyDictionaryForOutputText = new System.Windows.Forms.Button();
             this.btnDecrypt = new System.Windows.Forms.Button();
-            this.caesarKeyInput = new System.Windows.Forms.NumericUpDown();
             this.radioBtnsGroupCryptMethods.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.caesarKeyInput)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +95,14 @@
             this.radioBtnsGroupCryptMethods.TabStop = false;
             this.radioBtnsGroupCryptMethods.Text = "Метод шифрования";
             // 
+            // caesarKeyInput
+            // 
+            this.caesarKeyInput.Location = new System.Drawing.Point(161, 60);
+            this.caesarKeyInput.Name = "caesarKeyInput";
+            this.caesarKeyInput.Size = new System.Drawing.Size(120, 26);
+            this.caesarKeyInput.TabIndex = 5;
+            this.caesarKeyInput.ValueChanged += new System.EventHandler(this.caesarKeyInput_TextChanged);
+            // 
             // tritemiusWordInput
             // 
             this.tritemiusWordInput.Location = new System.Drawing.Point(193, 95);
@@ -120,7 +127,7 @@
             // 
             this.radioBtnCaesarEncoding.AutoSize = true;
             this.radioBtnCaesarEncoding.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioBtnCaesarEncoding.Location = new System.Drawing.Point(14, 54);
+            this.radioBtnCaesarEncoding.Location = new System.Drawing.Point(14, 61);
             this.radioBtnCaesarEncoding.Name = "radioBtnCaesarEncoding";
             this.radioBtnCaesarEncoding.Size = new System.Drawing.Size(140, 20);
             this.radioBtnCaesarEncoding.TabIndex = 1;
@@ -157,7 +164,7 @@
             // 
             this.btnSaveTextToFile.Enabled = false;
             this.btnSaveTextToFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSaveTextToFile.Location = new System.Drawing.Point(596, 351);
+            this.btnSaveTextToFile.Location = new System.Drawing.Point(596, 385);
             this.btnSaveTextToFile.Name = "btnSaveTextToFile";
             this.btnSaveTextToFile.Size = new System.Drawing.Size(149, 66);
             this.btnSaveTextToFile.TabIndex = 6;
@@ -165,23 +172,11 @@
             this.btnSaveTextToFile.UseVisualStyleBackColor = true;
             this.btnSaveTextToFile.Click += new System.EventHandler(this.btnSaveTextToFile_Click);
             // 
-            // btnShowFrequencyDictionaryForInputText
-            // 
-            this.btnShowFrequencyDictionaryForInputText.Enabled = false;
-            this.btnShowFrequencyDictionaryForInputText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowFrequencyDictionaryForInputText.Location = new System.Drawing.Point(596, 103);
-            this.btnShowFrequencyDictionaryForInputText.Name = "btnShowFrequencyDictionaryForInputText";
-            this.btnShowFrequencyDictionaryForInputText.Size = new System.Drawing.Size(149, 66);
-            this.btnShowFrequencyDictionaryForInputText.TabIndex = 7;
-            this.btnShowFrequencyDictionaryForInputText.Text = "Показать частотный словарь";
-            this.btnShowFrequencyDictionaryForInputText.UseVisualStyleBackColor = true;
-            this.btnShowFrequencyDictionaryForInputText.Click += new System.EventHandler(this.btnShowFrequencyDictionaryForInputText_Click);
-            // 
             // btnShowFrequencyDictionaryForOutputText
             // 
             this.btnShowFrequencyDictionaryForOutputText.Enabled = false;
             this.btnShowFrequencyDictionaryForOutputText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowFrequencyDictionaryForOutputText.Location = new System.Drawing.Point(596, 423);
+            this.btnShowFrequencyDictionaryForOutputText.Location = new System.Drawing.Point(596, 457);
             this.btnShowFrequencyDictionaryForOutputText.Name = "btnShowFrequencyDictionaryForOutputText";
             this.btnShowFrequencyDictionaryForOutputText.Size = new System.Drawing.Size(149, 66);
             this.btnShowFrequencyDictionaryForOutputText.TabIndex = 8;
@@ -201,13 +196,6 @@
             this.btnDecrypt.UseVisualStyleBackColor = true;
             this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
-            // caesarKeyInput
-            // 
-            this.caesarKeyInput.Location = new System.Drawing.Point(161, 53);
-            this.caesarKeyInput.Name = "caesarKeyInput";
-            this.caesarKeyInput.Size = new System.Drawing.Size(120, 26);
-            this.caesarKeyInput.TabIndex = 5;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,7 +203,6 @@
             this.ClientSize = new System.Drawing.Size(757, 584);
             this.Controls.Add(this.btnDecrypt);
             this.Controls.Add(this.btnShowFrequencyDictionaryForOutputText);
-            this.Controls.Add(this.btnShowFrequencyDictionaryForInputText);
             this.Controls.Add(this.btnSaveTextToFile);
             this.Controls.Add(this.btnLoadTextFromFile);
             this.Controls.Add(this.radioBtnsGroupCryptMethods);
@@ -243,7 +230,6 @@
         private System.Windows.Forms.RadioButton radioBtnMonoEncoding;
         private System.Windows.Forms.Button btnLoadTextFromFile;
         private System.Windows.Forms.Button btnSaveTextToFile;
-        private System.Windows.Forms.Button btnShowFrequencyDictionaryForInputText;
         private System.Windows.Forms.Button btnShowFrequencyDictionaryForOutputText;
         private System.Windows.Forms.TextBox tritemiusWordInput;
         private System.Windows.Forms.Button btnDecrypt;
