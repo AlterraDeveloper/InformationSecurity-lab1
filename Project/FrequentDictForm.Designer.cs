@@ -40,6 +40,9 @@
             // 
             this.dataGridFreqDict.AllowUserToAddRows = false;
             this.dataGridFreqDict.AllowUserToDeleteRows = false;
+            this.dataGridFreqDict.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridFreqDict.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridFreqDict.ColumnHeadersHeight = 40;
             this.dataGridFreqDict.Location = new System.Drawing.Point(12, 40);
@@ -52,6 +55,9 @@
             // 
             this.dataGridPrimaryFreqDict.AllowUserToAddRows = false;
             this.dataGridPrimaryFreqDict.AllowUserToDeleteRows = false;
+            this.dataGridPrimaryFreqDict.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPrimaryFreqDict.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridPrimaryFreqDict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPrimaryFreqDict.Location = new System.Drawing.Point(369, 40);

@@ -53,18 +53,21 @@ namespace Project
         public FrequentDictForm(Dictionary<char,double> dataSource)
         {
             InitializeComponent();
-
+            var i = 1;
             dataGridFreqDict.DataSource =
-                (from pair in dataSource orderby pair.Value descending select new {letterColumn = pair.Key, countColumn = pair.Value}).ToList();
+                (from pair in dataSource orderby pair.Value descending select new { indexColumn = i++, letterColumn = pair.Key, countColumn = pair.Value}).ToList();
 
+            i = 1;
             dataGridPrimaryFreqDict.DataSource =
-                (from pair in _primaryDict orderby pair.Value descending select new { letterColumn = pair.Key, countColumn = pair.Value }).ToList();
+                (from pair in _primaryDict orderby pair.Value descending select new { indexColumn = i++, letterColumn = pair.Key, countColumn = pair.Value }).ToList();
 
-            dataGridFreqDict.Columns[0].HeaderText = "Буква";
-            dataGridFreqDict.Columns[1].HeaderText = "Частота появления в %";
+            dataGridFreqDict.Columns[0].HeaderText = "Поряд.номер";
+            dataGridFreqDict.Columns[1].HeaderText = "Буква";
+            dataGridFreqDict.Columns[2].HeaderText = "Частота появления в %";
 
-            dataGridPrimaryFreqDict.Columns[0].HeaderText = "Буква";
-            dataGridPrimaryFreqDict.Columns[1].HeaderText = "Частота появления в %";
+            dataGridPrimaryFreqDict.Columns[0].HeaderText = "Поряд.номер";
+            dataGridPrimaryFreqDict.Columns[1].HeaderText = "Буква";
+            dataGridPrimaryFreqDict.Columns[2].HeaderText = "Частота появления в %";
 
         }
     }
