@@ -155,20 +155,35 @@ namespace Project
         {
             inputTextBox.Text = outputTextBox.Text;
 
-            Dictionary<int,double> sumArray = new Dictionary<int, double>();
-
-            for (int i = 1; i < _primaryDict.Keys.Count; i++)
+            if (radioBtnMonoEncoding.Checked)
             {
-                var decryptText = new CaesarEncoder(-i).Encrypt(inputTextBox.Text);
-                double value;
-                sumArray[i] = decryptText.ToLower().Sum(ch => _primaryDict.TryGetValue(ch,out value)? value : 0);
+                outputTextBox.Text = new MonoEncoder().Decrypt(inputTextBox.Text);
+            }
+            if (radioBtnCaesarEncoding.Checked)
+            {
+                Dictionary<int, double> sumArray = new Dictionary<int, double>();
+
+                for (int i = 1; i < _primaryDict.Keys.Count; i++)
+                {
+                    var decryptText = new CaesarEncoder(-i).Encrypt(inputTextBox.Text);
+                    double value;
+                    sumArray[i] = decryptText.ToLower().Sum(ch => _primaryDict.TryGetValue(ch, out value) ? value : 0);
+                }
+
+                var caesarKey = sumArray.OrderByDescending(x => x.Value).First().Key;
+
+                MessageBox.Show($"Ключ шифрования : {caesarKey}", "Success", MessageBoxButtons.OK);
+
+                outputTextBox.Text = new CaesarEncoder(caesarKey * (-1)).Encrypt(inputTextBox.Text);
+            }
+            if (radioBtnTritemiusEncoding.Checked)
+            {
+                outputTextBox.Text = new TritemiusEncoder(tritemiusWordInput.Text).Decrypt(inputTextBox.Text);
             }
 
-            var caesarKey = sumArray.OrderByDescending(x => x.Value).First().Key;
+            
 
-            MessageBox.Show($"Ключ шифрования : {caesarKey}", "Success", MessageBoxButtons.OK);
-
-            outputTextBox.Text = new CaesarEncoder(caesarKey * (-1)).Encrypt(inputTextBox.Text);
+            
         }
     }
 }

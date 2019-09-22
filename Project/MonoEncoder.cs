@@ -12,31 +12,29 @@ namespace Project
         private const string REVERSE_ALPHABET = "ЯЮЭЬЫЪЩШЧЦХФУТСРПОНМЛКЙИЗЖЁЕДГВБАяюэьыъщшчцхфутсрпонмлкйизжёедгвба";
         private static Dictionary<char, char> cryptAlphabet;
 
-        public MonoEncoder()
-        {
-            cryptAlphabet = new Dictionary<char, char>();
-            for (int i = 0; i < ALPHABET.Length; i++)
-            {
-                cryptAlphabet.Add(ALPHABET[i],REVERSE_ALPHABET[i]);
-            }       
-        }
-
         public string Encrypt(string inputText)
         {
             string outputText = string.Empty;
 
             foreach (var ch in inputText)
             {
-                try
-                {
-                    outputText += cryptAlphabet[ch];
-                }
-                catch (KeyNotFoundException ex)
-                {
-                    outputText += ch;
-                }
-                
+                var index = ALPHABET.IndexOf(ch);
+                outputText += index < 0 ? ch : REVERSE_ALPHABET.ToCharArray()[index];
             }
+
+            return outputText;
+        }
+
+        public string Decrypt(string inputText)
+        {
+            string outputText = string.Empty;
+
+            foreach (var ch in inputText)
+            {
+                var index = REVERSE_ALPHABET.IndexOf(ch);
+                outputText += index < 0 ? ch : ALPHABET.ToCharArray()[index];
+            }
+
             return outputText;
         }
     }
